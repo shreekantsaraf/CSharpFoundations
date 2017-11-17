@@ -25,8 +25,9 @@ namespace CSharpFoundations
             press 4 for exercise4
             press 5 for exercise5
             press 6 for exercise6
-            press 9 for NullCheck()
-            press x for stringTokenizer
+            press 7 for exercise7
+            press A for NullCheck()
+            press B for stringTokenizer
             press any other key for ending this session
             
             ");
@@ -38,8 +39,9 @@ namespace CSharpFoundations
             if (myKey == ConsoleKey.D4) { exercise4(); RepeatIt(); }
             if (myKey == ConsoleKey.D5) { exercise5(); RepeatIt(); }
             if (myKey == ConsoleKey.D6) { exercise6(); RepeatIt(); }
-            if (myKey == ConsoleKey.D9) { NullCheck(); RepeatIt(); }
-            if (myKey == ConsoleKey.X) { stringTokenizer(); RepeatIt(); }
+            if (myKey == ConsoleKey.D7) { exercise7(); RepeatIt(); }
+            if (myKey == ConsoleKey.A) { NullCheck(); RepeatIt(); }
+            if (myKey == ConsoleKey.B) { stringTokenizer(); RepeatIt(); }
             Console.WriteLine();
        }
 
@@ -68,6 +70,74 @@ namespace CSharpFoundations
 
             ");
         }
+        class AnotherClass
+        {
+            public AnotherClass()
+            {
+                Console.WriteLine("AnotherClass() constructore");
+            }
+            public long MultipleTwoNumbers(int A, int B)
+            {
+                Console.WriteLine("entering AnotherClass::MultipleTwoNumbers");
+                Console.WriteLine(@"
+                public long AnotherClass::MultipleTwoNumbers(int A, int B) received two params 
+                A = " + A +@"
+                B = " + B);
+                long ret = A * B;
+                Console.WriteLine("returning A*B = " +ret);
+                Console.WriteLine("leaving AnotherClass::MultipleTwoNumbers");
+                return ret;
+            }
+        }
+        static long MultipleTwoNumbers(int A, int B)
+        {
+            Console.WriteLine("entering static MultipleTwoNumbers");
+            Console.WriteLine(@"
+                static long MultipleTwoNumbers(int A, int B) received two params 
+                A = " + A + @"
+                B = " + B);
+            long ret = A * B;
+            Console.WriteLine("returning A*B = " + ret);
+            Console.WriteLine("leaving static MultipleTwoNumbers");
+            return ret;
+        }
+
+        static void exercise7()
+        {
+            /*
+             C# Exercise 7
+               ** */
+
+
+            Console.WriteLine(".......................Exercise7 starts.......................");
+            string note = @"
+            C# Exercise 7: 
+            Create a new branch in your CSharpFoundations repository called C# Exercise #7
+            Remove all of the code in your Main method of the Program class
+            create a static function MultipleTwoNumbers
+            create a similar function MultipleTwoNumbers in a class.
+            observe that static MultipleTwoNumbers doesn't need you to instantiate the any class.
+            But class::MultipleTwoNumbers will need you to instantiate a class.
+            Commit and merge your changes to your local repository and Github
+            ";
+            Console.WriteLine(note);
+            Console.WriteLine("calling static MultipleTwoNumbers");
+            MultipleTwoNumbers(2, 5);
+            Console.WriteLine();
+            Console.WriteLine("initiating AnotherClass");
+            AnotherClass ac = new AnotherClass();
+            Console.WriteLine("calling AnotherClass::MultipleTwoNumbers");
+            ac.MultipleTwoNumbers(10, 7);
+            Console.WriteLine(@"
+            Exercise Completed. press any key to continue
+            ");
+            Console.ReadKey();
+            Console.WriteLine(@"
+            .......................Exercise7 ends.......................
+            ");
+
+        }
+
         static void exercise6()
         {
             /*
