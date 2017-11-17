@@ -2,6 +2,7 @@
 and for the multiples of five print "Buzz". For numbers which are multiples of both three and five print "FizzBuzz".
  */
 using System;
+using System.Text;
 
 namespace CSharpFoundations
 {
@@ -9,7 +10,9 @@ namespace CSharpFoundations
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("hello, Please enter number between 5 and 20 - ");
+            StringBuilder sb = null;
+            sb.Append(s);
+            Console.WriteLine(s.ToString());
             int number = int.Parse(Console.ReadLine());
             while (number > 0) 
             {
