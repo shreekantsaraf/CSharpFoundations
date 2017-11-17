@@ -10,6 +10,7 @@ namespace CSharpFoundations
     {
         static void Main(string[] args)
         {
+            string  s = "hello, Please enter number between 5 and 20 - "; 
             StringBuilder sb = null;
             sb.Append(s);
             Console.WriteLine(s.ToString());
