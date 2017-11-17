@@ -26,6 +26,7 @@ namespace CSharpFoundations
             press 5 for exercise5
             press 6 for exercise6
             press 9 for NullCheck()
+            press x for stringTokenizer
             press any other key for ending this session
             
             ");
@@ -38,9 +39,35 @@ namespace CSharpFoundations
             if (myKey == ConsoleKey.D5) { exercise5(); RepeatIt(); }
             if (myKey == ConsoleKey.D6) { exercise6(); RepeatIt(); }
             if (myKey == ConsoleKey.D9) { NullCheck(); RepeatIt(); }
+            if (myKey == ConsoleKey.X) { stringTokenizer(); RepeatIt(); }
             Console.WriteLine();
        }
 
+        static void stringTokenizer()
+        {
+
+            string s = "this is a string that needs to be tokenized";
+            Console.WriteLine(@"
+            The original string is 
+            " +s);
+            char tokenizingChar = ' ';
+            Console.WriteLine("tokenizing char is space");
+            string[] tokens = s.Split(tokenizingChar);
+            Console.WriteLine("we have " + tokens.Length + "  number of tokens in the string. and the tokens are - ");
+            foreach (string token in tokens)
+            {
+                Console.WriteLine(token);
+            }
+            Console.WriteLine(@"
+            
+            stringTokenizer Completed. press any key to continue
+            ");
+            Console.ReadKey();
+            Console.WriteLine(@"
+            .......................stringTokenizer ends.......................
+
+            ");
+        }
         static void exercise6()
         {
             /*
