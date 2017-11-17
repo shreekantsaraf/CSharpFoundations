@@ -14,27 +14,6 @@ namespace CSharpFoundations
             RepeatIt();
         }
 
-        static void NullCheck()
-        {
-            Console.WriteLine(@"
-
-
-            .......................NullCheck starts.......................
-            ");
-            Console.WriteLine(@"
-            This is just a plain function that checks and validates the HasValue property of a nullable variable");
-            int? empty = null;
-            bool bRet = empty.HasValue ? true : false;
-
-            Console.WriteLine("value of bRet is  " + bRet + "  press any key to continue");
-            Console.ReadKey();
-            Console.WriteLine(@"
-
-            .......................NullCheck ends.......................
-            ");
-
-        }
-
         static void RepeatIt()
         {
             Console.Clear();
@@ -45,6 +24,7 @@ namespace CSharpFoundations
             press 3 for exercise3
             press 4 for exercise4
             press 5 for exercise5
+            press 6 for exercise6
             press 9 for NullCheck()
             press any other key for ending this session
             
@@ -56,55 +36,115 @@ namespace CSharpFoundations
             if (myKey == ConsoleKey.D3) { exercise3(); RepeatIt(); }
             if (myKey == ConsoleKey.D4) { exercise4(); RepeatIt(); }
             if (myKey == ConsoleKey.D5) { exercise5(); RepeatIt(); }
+            if (myKey == ConsoleKey.D6) { exercise6(); RepeatIt(); }
             if (myKey == ConsoleKey.D9) { NullCheck(); RepeatIt(); }
             Console.WriteLine();
+       }
 
-        }
-
-        static void exercise3()
-        {// I am writing this class in the VS 2017 community edition. The VS2017 can checkin the changes to GIT directly. Wow!
-         /*
-          C# Exercise 3 StringBuilder+FizzBuzz: 
-            Write a program that prints the numbers from 1 to 100. But for multiples of three print "Fizz" instead of the number 
-            and for the multiples of five print "Buzz". For numbers which are multiples of both three and five print "FizzBuzz".
-            ** */
+        static void exercise6()
+        {
+            /*
+             C# Exercise 5 
+               ** */
 
 
-            Console.WriteLine(".......................Exercise3 starts.......................");
+            Console.WriteLine(".......................Exercise6 starts.......................");
             string note = @"
-
-            C# Exercise 3 
-            This checkin is really a combination of Exercise3 that expects us to use StringBuilder and the FizzBuzz program.
-            FizzBuzz is a traditional program to test programmer's coding conceptual clarity...
-            FizzBuzz - Write a program that prints the numbers from 1 to 100. 
-            But for multiples of three print 'Fizz' instead of the number. (I have modified it to use number +'Fizz')
-            and for the multiples of five print 'Buzz'. (I have modified it to use number +'Buzz')
-            For numbers which are multiples of both three and five print 'FizzBuzz'. (I have modified it to use number +'FizzBuzz')
+            C# Exercise 6: 
+            Create a new branch in your CSharpFoundations repository called C# 
+            Exercise #6
+            Remove all of the code in your Main method of the Program class
+            Create a string variable called gameOfThronesPremier and assign it a string of April 17, 2011
+            Using the Convert class, convert your gameOfThronesPremierDate variable to a DateTime 
+            and assign it to a new DateTime variable called gameOfThronesPremierDate
+            Write the value of gameOfThronesPremierDate to the console window 
+                using the ToString method to convert the date to a string
+            Commit and merge your changes to your local repository and Github
             ";
             Console.WriteLine(note);
-            string s = "hello, Please enter number between 5 and 20 - ";
-            StringBuilder sb = new StringBuilder();
-            sb.Append(s);
-            Console.WriteLine(s.ToString());
-            int number = int.Parse(Console.ReadLine());
-            while (number > 0)
-            {
-                Console.Write(number + " ");
-                if (number % 3 == 0) Console.Write("Fizz");
-                if (number % 5 == 0) Console.Write("Buzz");
-                Console.WriteLine();
-                number = number - 1;
-            }
+            string gameOfThronesPremier = "April 17, 2011";
+            Console.WriteLine("gameOfThronesPremier = " + gameOfThronesPremier.ToString());
+            DateTime gameOfThronesPremierDate = Convert.ToDateTime(gameOfThronesPremier);
+            Console.WriteLine("gameOfThronesPremierDate = " + gameOfThronesPremierDate.ToString());
+
             Console.WriteLine(@"
             
             Exercise Completed. press any key to continue
             ");
             Console.ReadKey();
             Console.WriteLine(@"
-            .......................Exercise3 ends.......................
+            .......................Exercise6 ends.......................
 
             ");
+
+        }
+
+        static void exercise5()
+        {
+            /*
+             C# Exercise 5 
+               ** */
+
+
+            Console.WriteLine(".......................Exercise5 starts.......................");
+            string note = @"
+            Exercise5  -
+            Create a new branch in your CSharpFoundations repository called C# 
+            Exercise #5
+            Remove all of the code in your Main method of the Program class
+            Create a string array with the following values:Sansa Bran Eddard Arya 
+            Use a foreach loop to print each name to the console window
+            Commit and merge your changes to your local repository and Github
+            ";
+            Console.WriteLine(note);
+            string s = @"
+            I am building a string array with the primitive way ---
+            string[] sa = new string[4]; //step1 - declare it in first step 
+            sa[0] = ""Sansa""; //step2 - then instantiate it in the snext steps...
+            ";
+            StringBuilder sb = new StringBuilder();
+            sb.Append(s);
+            Console.WriteLine(sb.ToString());
+            string[] sa = new string[4];
+            sa[0] = "Sansa";
+            sa[1] = "Bran";
+            sa[2] = "Eddard";
+            sa[3] = "Arya";
+            foreach (string item in sa)
+            {
+                Console.Write(@"
+                " + item);
+            }
+            Console.WriteLine();
+            sb.Clear();
+            s = @"
+            I am building a string array with another primitive way ---- 
+            string[] sa = new string[] {""Sansa"", ""Bran""};// instantiate the array while declaring it 
+            ";
+            sb.Append(s);
+            Console.WriteLine(sb.ToString());
+            string[] sa2 = new string[] {
+            "Sansa",
+            "Bran",
+            "Eddard",
+            "Arya"};
+            foreach (string item in sa)
+            {
+                Console.Write(@"
+                " + item);
+            }
+            Console.WriteLine();
+
+            Console.WriteLine(@"
             
+            Exercise Completed. press any key to continue
+            ");
+            Console.ReadKey();
+            Console.WriteLine(@"
+            .......................Exercise5 ends.......................
+
+            ");
+
         }
 
         static void exercise4()
@@ -217,70 +257,69 @@ namespace CSharpFoundations
             .......................Exercise4 ends.......................
             ");
         }
-        static void exercise5()
-        {
-            /*
-             C# Exercise 5 
-               ** */
+
+        static void exercise3()
+        {// I am writing this class in the VS 2017 community edition. The VS2017 can checkin the changes to GIT directly. Wow!
+         /*
+          C# Exercise 3 StringBuilder+FizzBuzz: 
+            Write a program that prints the numbers from 1 to 100. But for multiples of three print "Fizz" instead of the number 
+            and for the multiples of five print "Buzz". For numbers which are multiples of both three and five print "FizzBuzz".
+            ** */
 
 
-            Console.WriteLine(".......................Exercise5 starts.......................");
+            Console.WriteLine(".......................Exercise3 starts.......................");
             string note = @"
-            Exercise5  -
-            Create a new branch in your CSharpFoundations repository called C# 
-            Exercise #5
-            Remove all of the code in your Main method of the Program class
-            Create a string array with the following values:Sansa Bran Eddard Arya 
-            Use a foreach loop to print each name to the console window
-            Commit and merge your changes to your local repository and Github
+
+            C# Exercise 3 
+            This checkin is really a combination of Exercise3 that expects us to use StringBuilder and the FizzBuzz program.
+            FizzBuzz is a traditional program to test programmer's coding conceptual clarity...
+            FizzBuzz - Write a program that prints the numbers from 1 to 100. 
+            But for multiples of three print 'Fizz' instead of the number. (I have modified it to use number +'Fizz')
+            and for the multiples of five print 'Buzz'. (I have modified it to use number +'Buzz')
+            For numbers which are multiples of both three and five print 'FizzBuzz'. (I have modified it to use number +'FizzBuzz')
             ";
             Console.WriteLine(note);
-            string s = @"
-            I am building a string array with the primitive way ---
-            string[] sa = new string[4]; //step1 - declare it in first step 
-            sa[0] = ""Sansa""; //step2 - then instantiate it in the snext steps...
-            "; 
+            string s = "hello, Please enter number between 5 and 20 - ";
             StringBuilder sb = new StringBuilder();
             sb.Append(s);
-            Console.WriteLine(sb.ToString());
-            string[] sa = new string[4];
-            sa[0] = "Sansa";
-            sa[1] = "Bran";
-            sa[2] = "Eddard";
-            sa[3] = "Arya";
-            foreach (string item in sa)
+            Console.WriteLine(s.ToString());
+            int number = int.Parse(Console.ReadLine());
+            while (number > 0)
             {
-                Console.Write(@"
-                " + item);
+                Console.Write(number + " ");
+                if (number % 3 == 0) Console.Write("Fizz");
+                if (number % 5 == 0) Console.Write("Buzz");
+                Console.WriteLine();
+                number = number - 1;
             }
-            Console.WriteLine();
-            sb.Clear();
-            s = @"
-            I am building a string array with another primitive way ---- 
-            string[] sa = new string[] {""Sansa"", ""Bran""};// instantiate the array while declaring it 
-            ";
-            sb.Append(s);
-            Console.WriteLine(sb.ToString());
-            string[] sa2 =  new string[] { 
-            "Sansa",
-            "Bran",
-            "Eddard",
-            "Arya"};
-            foreach (string item in sa)
-            {
-                Console.Write(@"
-                " + item);
-            }
-            Console.WriteLine();
-
             Console.WriteLine(@"
             
             Exercise Completed. press any key to continue
             ");
             Console.ReadKey();
             Console.WriteLine(@"
-            .......................Exercise5 ends.......................
+            .......................Exercise3 ends.......................
 
+            ");
+            
+        }
+        static void NullCheck()
+        {
+            Console.WriteLine(@"
+
+
+            .......................NullCheck starts.......................
+            ");
+            Console.WriteLine(@"
+            This is just a plain function that checks and validates the HasValue property of a nullable variable");
+            int? empty = null;
+            bool bRet = empty.HasValue ? true : false;
+
+            Console.WriteLine("value of bRet is  " + bRet + "  press any key to continue");
+            Console.ReadKey();
+            Console.WriteLine(@"
+
+            .......................NullCheck ends.......................
             ");
 
         }
