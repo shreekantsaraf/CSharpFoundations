@@ -11,7 +11,8 @@ namespace CSharpFoundations
     {
         static void Main(string[] args)
         {
-            RepeatIt();
+            TypeConversion();
+            //RepeatIt();
         }
 
         static void RepeatIt()
@@ -88,6 +89,15 @@ namespace CSharpFoundations
                 Console.WriteLine("leaving AnotherClass::MultipleTwoNumbers");
                 return ret;
             }
+        }
+        static public int TypeConversion()
+        {
+            long minutes = 525600;
+            int years = 1;
+
+            years = Convert.ToInt32(minutes);
+
+            return years;
         }
         static long MultipleTwoNumbers(int A, int B)
         {
