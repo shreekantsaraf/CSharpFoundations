@@ -11,8 +11,9 @@ namespace CSharpFoundations
     {
         static void Main(string[] args)
         {
-            TypeConversion();
-            //RepeatIt();
+            //TypeConversion();
+            RepeatIt();
+            //int.TryParse()
         }
 
         static void RepeatIt()
@@ -22,13 +23,14 @@ namespace CSharpFoundations
             .......................Exercises start.......................
             press 1 for exercise1 (under construction)
             press 2 for exercise2 (under construction)
-            press 3 for exercise3
-            press 4 for exercise4
-            press 5 for exercise5
-            press 6 for exercise6
-            press 7 for exercise7
-            press A for NullCheck()
-            press B for stringTokenizer
+            press 3 for exercise3 - StringBuilder and the FizzBuzz program
+            press 4 for exercise4 - nullable value-type varibale declarable (e.g. int? and HasValue)
+            press 5 for exercise5 - building a string array with the primitive way (e.g. string[] s = {""svs"");)
+            press 6 for exercise6 - use Convert.ToDateTime
+            press 7 for exercise7 - static methods and non-static methods
+            press 8 for exercise8
+            press Y for NullCheck()
+            press Z for stringTokenizer
             press any other key for ending this session
             
             ");
@@ -41,8 +43,9 @@ namespace CSharpFoundations
             if (myKey == ConsoleKey.D5) { exercise5(); RepeatIt(); }
             if (myKey == ConsoleKey.D6) { exercise6(); RepeatIt(); }
             if (myKey == ConsoleKey.D7) { exercise7(); RepeatIt(); }
-            if (myKey == ConsoleKey.A) { NullCheck(); RepeatIt(); }
-            if (myKey == ConsoleKey.B) { stringTokenizer(); RepeatIt(); }
+            if (myKey == ConsoleKey.D8) { exercise8(); RepeatIt(); }
+            if (myKey == ConsoleKey.Y) { NullCheck(); RepeatIt(); }
+            if (myKey == ConsoleKey.Z) { stringTokenizer(); RepeatIt(); }
             Console.WriteLine();
        }
 
@@ -71,6 +74,33 @@ namespace CSharpFoundations
 
             ");
         }
+
+        class Parser
+        {
+            public static int? ParseInt(string strIn)
+            {
+                int nRet;
+                bool bInt = int.TryParse(strIn, out nRet);
+                if (!bInt) return null;
+                return nRet;
+            }
+        }
+        static void exercise8()
+        {
+            Console.WriteLine(@"
+            type in a string. This string will be converted into int. 
+            if the string is not an int, then it will ruturn - This is not an integer value. ");
+            string val = Console.ReadLine();
+            int? nRet = Parser.ParseInt(val);
+            if (nRet.HasValue)
+                Console.WriteLine(nRet.ToString() + " - This is an integer.");
+            else
+                Console.WriteLine(val + " - This is not an integer value.");
+
+            Console.WriteLine("press any key to continue");
+            Console.ReadKey();
+        }
+
         class AnotherClass
         {
             public AnotherClass()
@@ -255,112 +285,59 @@ namespace CSharpFoundations
         }
 
         static void exercise4()
-
         {// I am writing this class in the VS 2017 community edition. The VS2017 can checkin the changes to GIT directly. Wow!
-
             /*
-
              C# Exercise 4: 
-
              Create a new branch in your CSharpFoundations repository called C# Exercise #4
-
              Remove all of the code in your Main method of the Program class 
-
              Create a nullable int variable called bonus and set the initial value to null
-
              Create another variable called hasBonus and set it’s initial value to false
-
              Write an if statement that sets hasBonus to true if the bonus variable has a value.
-
              Commit and merge your changes to your local repository and Github
-
              * * */
-
-
-
-
-
             Console.WriteLine(".......................Exercise4 starts.......................");
-
             string note = @"
-
-
-
              C# Exercise 4: 
-
              Create a new branch in your CSharpFoundations repository called C# Exercise #4 
-
              Remove all of the code in your Main method of the Program class
-
              Create a nullable int variable called bonus and set the initial value to null
-
              Create another variable called hasBonus and set it’s initial value to false
-
              Write an if statement that sets hasBonus to true if the bonus variable has a value.
-
              Commit and merge your changes to your local repository and Github
-
             ";
-
             Console.WriteLine(note);
-
             Console.WriteLine(@"
-
             Do you want bonus to be assigned 100 dollars? Press y for yes press any other key for no....
-
             ");
-
             //ConsoleKey key = Console.ReadKey().KeyChar;
-
             int? bonus = null; //Nullable int
-
             ConsoleKey myKey;
-
             myKey = Console.ReadKey().Key;
-
             if (myKey == ConsoleKey.Y)
-
             {
-
                 bonus = 100;
-
             }
-
             Console.WriteLine(@"
-
             you pressed key = " + myKey);
-
             bool hasBonus = false; // non nullable bool
-
             if (bonus.HasValue)
-
             {
                 hasBonus = true;
                 Console.WriteLine(@"
-
                 bonus has a value  = " + bonus);
-
                 Console.WriteLine(@"
-
                 setting hasBonus " + hasBonus);
-
             }
             else
-
             {
                 Console.WriteLine(@"
                 bonus has no value and thus hasBonus = " + hasBonus);
             }
             Console.WriteLine(@"
-
-            
-
             Exercise Completed. press any key to continue
-
             ");
             Console.ReadKey();
             Console.WriteLine(@"
-
             .......................Exercise4 ends.......................
             ");
         }
