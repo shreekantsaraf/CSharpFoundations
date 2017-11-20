@@ -28,7 +28,8 @@ namespace CSharpFoundations
             press 5 for exercise5 - building a string array with the primitive way (e.g. string[] s = {""svs"");)
             press 6 for exercise6 - use Convert.ToDateTime
             press 7 for exercise7 - static methods and non-static methods
-            press 8 for exercise8
+            press 8 for exercise8 - usge of int.TryParse
+            press 9 for exercise9 - StarkJumper (create a new string array and exclude a specific string such as Stark
             press Y for NullCheck()
             press Z for stringTokenizer
             press any other key for ending this session
@@ -44,6 +45,7 @@ namespace CSharpFoundations
             if (myKey == ConsoleKey.D6) { exercise6(); RepeatIt(); }
             if (myKey == ConsoleKey.D7) { exercise7(); RepeatIt(); }
             if (myKey == ConsoleKey.D8) { exercise8(); RepeatIt(); }
+            if (myKey == ConsoleKey.D9) { exercise9(); RepeatIt(); }
             if (myKey == ConsoleKey.Y) { NullCheck(); RepeatIt(); }
             if (myKey == ConsoleKey.Z) { stringTokenizer(); RepeatIt(); }
             Console.WriteLine();
@@ -74,7 +76,104 @@ namespace CSharpFoundations
 
             ");
         }
+        static void exercise12()
+        {
+            Console.Clear();
+            Console.WriteLine(".......................Exercise12 start.......................");
+            Console.WriteLine(@"
+            ");
 
+
+            Console.WriteLine(".......................Exercise12 End.......................");
+            Console.WriteLine("press any key to continue");
+            Console.ReadKey();
+        }
+        static void exercise11()
+        {
+            Console.Clear();
+            Console.WriteLine(".......................Exercise11 start.......................");
+            Console.WriteLine(@"
+            ");
+
+
+            Console.WriteLine(".......................Exercise11 End.......................");
+            Console.WriteLine("press any key to continue");
+            Console.ReadKey();
+        }
+        static void exercise10()
+        {
+            Console.Clear();
+            Console.WriteLine(".......................Exercise10 start.......................");
+            Console.WriteLine(@"
+            ");
+
+
+            Console.WriteLine(".......................Exercise10 End.......................");
+            Console.WriteLine("press any key to continue");
+            Console.ReadKey();
+        }
+        class StarkJumper
+        {
+            public string[] stringManipulator(string [] inArray, string strToIgnore = "Stark")
+            {
+                string [] retArray  = new string[inArray.Length];
+                int j=0;
+                for (int i=0; i < inArray.Length; i++)
+                {
+
+                    string str = inArray[i];
+                    if((String.Compare(str,strToIgnore,  StringComparison.OrdinalIgnoreCase) != 0))
+                    {
+                        retArray[j] = str;
+                        j++;
+                    }
+                }  
+                return retArray;
+            }
+        }
+        static void exercise9()
+        {
+            Console.Clear();
+            Console.WriteLine(".......................Exercise9 start.......................");
+            Console.WriteLine(@"C# Exercise 9: Create a new branch in your CSharpFoundations repository called C# Exercise #9
+            Create a new class called StarkJumper
+            Create a method on the StarkJumper class that does the following:
+            Takes an array of strings as a parameter
+            Returns an array of strings
+            Loops through the parameter array using a for loop
+            Add each character from the parameter array to a new array unless they are a Stark
+            Return the new array of strings that does not have the Starks
+            In your Program.Main method, remove any previous code and create a string array of Game Of Thrones character names.
+            Create an instance of StarkJumper and pass the array to the method that filters out the Starks
+            Perform a console.writeline for each of the character names returned from the method
+            Commit and merge your changes to your local repository and Github
+            ");
+            StarkJumper sj = new StarkJumper();
+            //string [] arraySent = {"a", "b", "u"};
+            Console.WriteLine(@"
+            Type in an array of strings. example is - 
+            Sansa Bran Stark Eddard Stark Arya 
+            if you don't type in any string, I'll just use the above string as the defalt input ...");
+            
+            string strFromUser = Console.ReadLine();
+            strFromUser.Trim();
+            if (strFromUser.Length == 0)
+            {
+                strFromUser = "Sansa Bran Eddard Stark stark STARK Arya";
+            }
+            Char delimiter = ' ';
+            string [] arraySent = strFromUser.Split(delimiter);
+            string[] arrayReturned = sj.stringManipulator( arraySent);
+            foreach(string str in arrayReturned)
+            {
+                if (str != null && str.Trim().Length>0)
+                    Console.WriteLine(str);
+            }
+            Console.WriteLine();
+            Console.WriteLine(".......................Exercise9 End.......................");
+            Console.WriteLine("press any key to continue");
+            Console.ReadKey();
+        }
         class Parser
         {
             public static int? ParseInt(string strIn)
