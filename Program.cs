@@ -87,6 +87,17 @@ namespace CSharpFoundations
         }
         static void exercise8()
         {
+            Console.Clear();
+            Console.WriteLine(".......................Exercise8 start.......................");
+            Console.WriteLine(@"
+            C# Exercise 8: Create a new branch in your CSharpFoundations repository called C# Exercise #8
+            Create a new class called ParserIn your Parser class 
+            create a static function called ParseInt that will take a string as a parameter and return a nullable int.  
+            Using the int.TryParse method in your ParseInt method, convert the string to an integer and return it.
+            If the TryParse returns false then return null from your ParseInt method
+            In the main method of your Program class, create and instance of your Parser class. 
+            Use the ParseInt method to write the result of parsing “GOT” to the console window.
+            Commit and merge your changes to your local repository and Github");
             Console.WriteLine(@"
             type in a string. This string will be converted into int. 
             if the string is not an int, then it will ruturn - This is not an integer value. ");
@@ -99,6 +110,7 @@ namespace CSharpFoundations
 
             Console.WriteLine("press any key to continue");
             Console.ReadKey();
+            Console.WriteLine(".......................Exercise8 End.......................");
         }
 
         class AnotherClass
