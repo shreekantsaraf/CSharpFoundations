@@ -30,6 +30,7 @@ namespace CSharpFoundations
             press 7 for exercise7 - static methods and non-static methods
             press 8 for exercise8 - usge of int.TryParse
             press 9 for exercise9 - StarkJumper (create a new string array and exclude a specific string such as Stark
+            press A for exercise10 - ParseDouble and try..catch
             press Y for NullCheck()
             press Z for stringTokenizer
             press any other key for ending this session
@@ -46,6 +47,7 @@ namespace CSharpFoundations
             if (myKey == ConsoleKey.D7) { exercise7(); RepeatIt(); }
             if (myKey == ConsoleKey.D8) { exercise8(); RepeatIt(); }
             if (myKey == ConsoleKey.D9) { exercise9(); RepeatIt(); }
+            if (myKey == ConsoleKey.A) { exercise10(); RepeatIt(); }
             if (myKey == ConsoleKey.Y) { NullCheck(); RepeatIt(); }
             if (myKey == ConsoleKey.Z) { stringTokenizer(); RepeatIt(); }
             Console.WriteLine();
@@ -100,14 +102,52 @@ namespace CSharpFoundations
             Console.WriteLine("press any key to continue");
             Console.ReadKey();
         }
+
+        class NumberValidator
+        {
+            public double ParseDouble(string strDouble)
+            {
+                double dblRet = 0;
+                try
+                {
+                    dblRet = double.Parse(strDouble);
+                }
+                catch(Exception ex)
+                {
+                    throw ex;
+                }                   
+                return dblRet;
+            }
+        }
         static void exercise10()
         {
             Console.Clear();
             Console.WriteLine(".......................Exercise10 start.......................");
             Console.WriteLine(@"
+            C# Exercise 10: Create a new branch in your CSharpFoundations repository called C# Exercise #10
+            Create a new class called NumberValidator
+            Add a method to the NumberValidator class called ParseDouble that takes a string as a parameter and returns a double
+            In the ParseDouble method use the double.Parse method to return the string as a double.  
+            Use the Try/Catch block to catch an exception and re-throw the error as a System.Exception error instead of the original error
+            Commit and merge your changes to your local repository and Github
             ");
-
-
+            Console.WriteLine(@"
+                Enter a number in double format. e.g. 1000.667. This value is default unless provided.  ");
+            string dblValue = Console.ReadLine();
+            if (dblValue.Trim().Length <=0) 
+            {
+                dblValue = "1000.667";
+            }
+            NumberValidator nv = new NumberValidator();
+            try
+            {
+                double dbl = nv.ParseDouble(dblValue);
+                Console.WriteLine("You entered {0} and it is indeed a double. The parsed value is {1}", dblValue, dbl.ToString());
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("You entered {0} and it is NOT a double. The parser threw exception...   {1} {2}", dblValue, System.Environment.NewLine,  ex.ToString());
+            }           
             Console.WriteLine(".......................Exercise10 End.......................");
             Console.WriteLine("press any key to continue");
             Console.ReadKey();
