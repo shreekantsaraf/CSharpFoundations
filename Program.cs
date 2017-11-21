@@ -5,6 +5,7 @@
 using System;
 using System.Text;
 
+
 namespace CSharpFoundations
 {
     class Program
@@ -12,6 +13,7 @@ namespace CSharpFoundations
         static void Main(string[] args)
         {
             //TypeConversion();
+            ;
             RepeatIt();
             //int.TryParse()
         }
@@ -19,8 +21,10 @@ namespace CSharpFoundations
         static void RepeatIt()
         {
             Console.Clear();
-            Console.WriteLine(@"
+            Console.WriteLine("The time now is " + DateTime.Now.ToLongDateString() + ":" + DateTime.Now.ToLongTimeString() 
+                + @" 
             .......................Exercises start.......................
+            It is 
             press 1 for exercise1 (under construction)
             press 2 for exercise2 (under construction)
             press 3 for exercise3 - StringBuilder and the FizzBuzz program
@@ -31,6 +35,9 @@ namespace CSharpFoundations
             press 8 for exercise8 - usge of int.TryParse
             press 9 for exercise9 - StarkJumper (create a new string array and exclude a specific string such as Stark
             press A for exercise10 - ParseDouble and try..catch
+            press B for exercise11 - experiment
+            press C for exercise12 - Converter - This demonstrates static classes
+            press D for exercise11_fromClass - Jagged Arrays
             press Y for NullCheck()
             press Z for stringTokenizer
             press any other key for ending this session
@@ -48,6 +55,9 @@ namespace CSharpFoundations
             if (myKey == ConsoleKey.D8) { exercise8(); RepeatIt(); }
             if (myKey == ConsoleKey.D9) { exercise9(); RepeatIt(); }
             if (myKey == ConsoleKey.A) { exercise10(); RepeatIt(); }
+            if (myKey == ConsoleKey.B) { exercise11(); RepeatIt(); }
+            if (myKey == ConsoleKey.C) { exercise12(); RepeatIt(); }
+            if (myKey == ConsoleKey.D) { exercise11_fromclass(); RepeatIt(); }
             if (myKey == ConsoleKey.Y) { NullCheck(); RepeatIt(); }
             if (myKey == ConsoleKey.Z) { stringTokenizer(); RepeatIt(); }
             Console.WriteLine();
@@ -78,17 +88,91 @@ namespace CSharpFoundations
 
             ");
         }
+
+        static void exercise11_fromclass()
+        {
+            Console.Clear();
+            Console.WriteLine(".......................exercise11_fromclass start.......................");
+            Console.WriteLine(@"
+            C# Exercise 11: Create a new branch in your CSharpFoundations repository called C# Exercise #11
+            Remove all of the code from your Program.Main method
+            Create a Jagged Array of at least 3 Game of Thrones houses with at least 2 character names from that house (arrays of names inside of an array of houses)
+            Use loops to write to the console window each house and their character names
+            Commit and merge your changes to your local repository and Github
+            ");
+
+            string[][] arrayOfHouses = new string[3][];
+
+            arrayOfHouses[0] = new string[3];
+            arrayOfHouses[1] = new string[3];
+            arrayOfHouses[2] = new string[3];
+
+            arrayOfHouses[0][0] = "House Stark";
+            arrayOfHouses[0][1] = "Eddard (Ned) Stark";
+            arrayOfHouses[0][2] = "Catelyn Stark";
+
+            arrayOfHouses[1][0] = "House Lannister";
+            arrayOfHouses[1][1] = "Tywin Lannister";
+            arrayOfHouses[1][2] = "Cersei Lannister";
+
+            arrayOfHouses[2][0] = "House Baratheon";
+            arrayOfHouses[2][1] = "Robert Baratheon";
+            arrayOfHouses[2][2] = "Stannis Baratheon";
+
+            foreach (string[] arr in arrayOfHouses)
+            {
+                Console.WriteLine("House Name ------" + arr[0]);
+                Console.WriteLine("House residents - ({0}) and ({1})", arr[1], arr[2] );
+                Console.WriteLine("-------- ------");
+            }
+
+            
+
+
+            Console.WriteLine(".......................Exercise12 End.......................");
+            Console.WriteLine("press any key to continue");
+            Console.ReadKey();
+        }
+
         static void exercise12()
         {
             Console.Clear();
             Console.WriteLine(".......................Exercise12 start.......................");
             Console.WriteLine(@"
             ");
+            Console.WriteLine("Enter FarenHeight number (default is 32) = ");
+            string strFarenheight = Console.ReadLine();
+            if (strFarenheight.Trim().Length == 0) strFarenheight = "32";
+            double dblFarenheight = Convert.ToDouble(strFarenheight);
+            double dblCelsius = Converter.FarennheightToCelsius(dblFarenheight);
 
+            Console.WriteLine("You Entered {0} Farenheights and the converter class converted it to celsius = {1}     ",
+                dblFarenheight.ToString(),
+                dblCelsius.ToString());
+
+            Console.WriteLine("Now Enter Celsius number (default is 0) = ");
+            string strCelsius = Console.ReadLine();
+            if (strCelsius.Trim().Length == 0) strCelsius = "0";
+            dblCelsius = Convert.ToDouble(strCelsius);
+            dblFarenheight = Converter.CelsiusToFarennheight(dblCelsius);
+            Console.WriteLine("You Entered {0} strCelsius and the converter class converted it to FarenHeight = {1}     " ,
+                dblCelsius.ToString(),
+                dblFarenheight.ToString());
 
             Console.WriteLine(".......................Exercise12 End.......................");
             Console.WriteLine("press any key to continue");
             Console.ReadKey();
+        }
+        static public string[] SwapFirstAndLast(string[] arr)
+        {
+            string[] strArray = new string[arr.Length];
+            for (int i = 1; i < arr.Length - 1; i++)
+            {
+                strArray[i] = arr[i];
+            }
+            strArray[0] = arr[arr.Length - 1];
+            strArray[arr.Length - 1] = arr[0];
+            return strArray;
         }
         static void exercise11()
         {
@@ -96,7 +180,15 @@ namespace CSharpFoundations
             Console.WriteLine(".......................Exercise11 start.......................");
             Console.WriteLine(@"
             ");
-
+            string strFromUser = "svs is mad in c#";
+            Char delimiter = ' ';
+            string[] arraySent = strFromUser.Split(delimiter);
+            string[] arrayReturned = SwapFirstAndLast(arraySent);
+            Console.WriteLine(strFromUser);
+            foreach(string s in arrayReturned)
+            {
+                Console.WriteLine(s);
+            }
 
             Console.WriteLine(".......................Exercise11 End.......................");
             Console.WriteLine("press any key to continue");
