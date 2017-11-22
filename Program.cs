@@ -3,25 +3,84 @@
  */
  
 using System;
+using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 
 namespace CSharpFoundations
 {
     class Program
     {
+        public List<int> MakeCollection(int start, int end)
+        {
+            List<int> lstOut = new List<int>();
+            while (start < end)
+            {
+                lstOut.Add(start++);
+            }
+            return lstOut;
+        }
+        public static List<double> GetDebits(List<double> lstIn)
+        {
+            List<double> q = new List<double>();
+            var ms = lstIn.Where(inte => inte < 0)
+                    .Select(inte => inte);
+            foreach (var m in ms)
+            {
+                q.Add(m);
+            }
+            return q;
+        }
+        public class internalProtectedPublicAndPrivate
+        {
+            internal int iNternal = 0;
+            protected int pRotected = 0;
+            private int pRivate = 0;
+            public int pUblic = 0;
+        }
         static void Main(string[] args)
         {
             //TypeConversion();
-            ;
-            RepeatIt();
+            //parent p = new parent();
+            //Console.WriteLine(p.name());
+            //parent cASp = new child();
+            //Console.WriteLine(cASp.name());
+            List<double> lstIn = new List<double>();
+            lstIn.Add(3.5);
+            lstIn.Add(-3.1);
+            lstIn.Add(0.5);
+            lstIn.Add(-2.5);
+            lstIn.Add(-7.5);
+
+            List<double> lOut = GetDebits(lstIn);
+            child cASc = new child();
+            Console.WriteLine(cASc.name);
+            cASc.abstractMethod();
+            cASc.CallVirtualMethod();
+            Zebra z = new Zebra();
+            z.Eat();
+            z.getGlitters();
+            internalProtectedPublicAndPrivate ccc = new internalProtectedPublicAndPrivate();
+          
+
+
+            Console.WriteLine(".......................temp inheritance s End.......................");
+            Console.WriteLine("press any key to continue");
+            Console.ReadKey();
+            //RepeatIt();
             //int.TryParse()
         }
 
         static void RepeatIt()
         {
+            DateTime dtThen = DateTime.Now.AddYears(65 - 25);
+            //DateTime dt = new DateTime(DateTime.Now+65-25)
             Console.Clear();
-            Console.WriteLine("The time now is " + DateTime.Now.ToLongDateString() + ":" + DateTime.Now.ToLongTimeString() 
+            Console.WriteLine(@"
+                The time then will be " + dtThen.ToLongDateString() + ":" + dtThen.ToLongTimeString() +
+                @"
+                The time now is " + DateTime.Now.ToLongDateString() + ":" + DateTime.Now.ToLongTimeString() 
                 + @" 
             .......................Exercises start.......................
             It is 
